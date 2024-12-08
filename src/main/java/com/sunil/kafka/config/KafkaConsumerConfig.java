@@ -46,7 +46,7 @@ public class KafkaConsumerConfig
     }
 
     @Bean
-    ConsumerFactory<String, Consumer> consumerConsumerFactory() 
+    ConsumerFactory<String, Consumer> consumerConsumerFactory1() 
 	{    	
 		log.info("Loading consumerConsumerFactory");
         Map<String, Object> props = new HashMap<>();
@@ -58,12 +58,33 @@ public class KafkaConsumerConfig
     }
 
     @Bean
-    ConcurrentKafkaListenerContainerFactory<String, Consumer> kafkaListener() 
+    ConcurrentKafkaListenerContainerFactory<String, Consumer> kafkaListener1() 
     {
     	log.info("Loading kafkaListener");
         ConcurrentKafkaListenerContainerFactory<String, Consumer> factory = new ConcurrentKafkaListenerContainerFactory<>();
-        factory.setConsumerFactory(consumerConsumerFactory());
+        factory.setConsumerFactory(consumerConsumerFactory1());
         return factory;
     }
+    
+//    @Bean
+//    ConsumerFactory<String, Consumer> consumerConsumerFactory2() 
+//	{    	
+//		log.info("Loading consumerConsumerFactory");
+//        Map<String, Object> props = new HashMap<>();
+//        props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
+//        props.put(ConsumerConfig.GROUP_ID_CONFIG, "consumer_group");
+//        props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
+//        props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, JsonDeserializer.class);
+//        return new DefaultKafkaConsumerFactory<>(props, new StringDeserializer(), new JsonDeserializer<>(Consumer.class));
+//    }
+//
+//    @Bean
+//    ConcurrentKafkaListenerContainerFactory<String, Consumer> kafkaListener2() 
+//    {
+//    	log.info("Loading kafkaListener");
+//        ConcurrentKafkaListenerContainerFactory<String, Consumer> factory = new ConcurrentKafkaListenerContainerFactory<>();
+//        factory.setConsumerFactory(consumerConsumerFactory2());
+//        return factory;
+//    }
 	
 }

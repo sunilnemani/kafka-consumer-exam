@@ -19,10 +19,16 @@ public class KafkaMessageConsumer
         log.info("Consumed string message: " + message);
     }
 
-    @KafkaListener(topics = "consumer_topic", groupId = "consumer_group", containerFactory = "kafkaListener")
-    public void consume(Consumer consumer) 
+    @KafkaListener(topics = "consumer_topic", groupId = "consumer_group", containerFactory = "kafkaListener1")
+    public void consume1(Consumer consumer) 
     {
-        log.info("Consumed JSON message: " + consumer);
+        log.info("Consumed1 JSON message: " + consumer);
     }
+    
+//    @KafkaListener(topics = "consumer_topic", groupId = "consumer_group_2", containerFactory = "kafkaListener2")
+//    public void consume2(Consumer consumer) 
+//    {
+//        log.info("Consumed2 JSON message: " + consumer);
+//    }
 	
 }
